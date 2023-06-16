@@ -78,7 +78,7 @@ class Servidor:
     '''
     def handle_search(self, conn, data):
         try:
-            #Extrai as informações do peer da mensagem SEARCH
+            # Extrai as informações do peer da mensagem SEARCH
             peer_info = data.split()[1].split(":")
             peer_ip = peer_info[0]
             peer_result = peer_info[1].split(",")
@@ -96,7 +96,6 @@ class Servidor:
                 response = "[]"
             else:
                 response = ",".join([f"{peer[0]}:{peer[1]}" for peer in peers_with_file])
-
             conn.sendall(response.encode())
 
             print(f"Peer  {peer_ip}:{peer_port} solicitou arquivo {filename}.")
